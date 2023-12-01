@@ -31,7 +31,7 @@
                     <a class="nav-link" href="#">GENRE</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">POPULER</a>
+                    <a class="nav-link" href="#">TRENDING</a>
                 </li>
             </ul>
         </div>
