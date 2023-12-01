@@ -108,7 +108,7 @@
     
     <!-- Description -->
     <div class="md:col-start-2 col-span-11 xl:-ml-5">
-      <p class="pl-5 text-sm text-gray-800 font-light"> 6 Desember 2023 </p>
+      <p class="pl-5 text-sm text-gray-800 font-light"> 7 Desember 2023 </p>
     </div>
     
   </a>
