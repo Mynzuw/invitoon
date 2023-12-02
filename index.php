@@ -17,8 +17,7 @@
     </style> -->
 </head>
 <body>
-<header class="relative">
-    <nav class="sticky bg-white fixed relative w-full z-20 top-0 left-0 right-0 border-b border-gray-200;">
+    <nav class="navbar-sticky bg-white sticky w-full z-10 top-0 left-0 right-0 border-b border-gray-200;">
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
             <a href="index.php" class="flex items-center space-x-3 rtl:space-x-reverse">
                 <img src="Logo Invitoon 1.png" class="h-8" alt="Flowbite Logo">
@@ -59,7 +58,7 @@
                     <a href="index.php" class="block py-2 px-3 text-black bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0" aria-current="page">Home</a>
                 </li>
                 <li>
-                    <a href="#" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Trending</a>
+                    <a href="populer.php" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Populer</a>
                 </li>
                 <li>
                     <a href="#" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Kategori</a>
@@ -77,6 +76,8 @@
 
         
     </nav>
+    
+    <main class="bg-gray-200">
 
     
 
@@ -89,7 +90,7 @@
         </div>
     </div> -->
 
-    </header>
+    
     <div class="p-4">
         <div class="grid grid-cols-12">
             <div class="col-span-1"></div>
@@ -201,7 +202,7 @@
                             ?>
                         </div>
                     </div>
-                    <div class="col-span-1 border-2 rounded-md py-2 px-4 max-h-[538px] overflow-y-auto">
+                    <div class="col-span-1 border-2 bg-white rounded-md py-2 px-4 max-h-[538px] overflow-y-auto">
                         <h1 class="text-2xl font-extrabold">Trending Komik</h1>
                         <table class="table-auto mt-4 mb-4">
                             <thead>
@@ -241,7 +242,7 @@
             </div>
             <div class="col-span-1"></div>
         </div>
-        
+    </main>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>

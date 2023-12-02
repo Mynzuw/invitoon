@@ -58,7 +58,7 @@
                     <a href="index.php" class="block py-2 px-3 text-black bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0" aria-current="page">Home</a>
                 </li>
                 <li>
-                    <a href="#" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Trending</a>
+                    <a href="populer.php" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Trending</a>
                 </li>
                 <li>
                     <a href="#" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Kategori</a>
@@ -90,9 +90,60 @@
 
     </header>
     <div class="bg-gray-200 flex flex-col gap-4  items-center justify-center">
-        <img src="admin/gambar/NewCover-Gundala.jpg" alt="">
+    <div class="relative">
+        <div class="absolute inset-0 w-full h-full bg-gray-300 bg-opacity-75">
+            <div class="">
+                <h1 class="mb-4 text-4xl text-center font-bold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-black text-lg sm:text-sm">Gundala Putra Petir</h1>
+                <p class="mb-6 text-lg  text-center font-normal text-gray-black lg:text-xl sm:px-16 xl:px-48 dark:text-black-400 text-lg sm:text-sm">Gundala adalah tokoh komik ciptaan Hasmi yang muncul pertama kali dalam komik Gundala Putra Petir pada tahun 1969. Genre komik adalah Fantasi. Jelas tampak pengaruh komik pahlawan super Amerika pada desain karakter maupun jenis kekuatannya, meskipun alur ceritanya bergaya Indonesia. Lokasi cerita sering digambarkan di kota Yogyakarta meskipun dalam filmnya pada tahun 1982 diceritakan berada di Jakarta. Gundala termasuk karakter komik yang cukup populer di Indonesia selain Si Buta dari Gua Hantu, Panji Tengkorak, dan Godam.</p>
+
+            </div>
+        </div>
+        <img src="admin/gambar/NewCover-Gundala.jpg" alt="Gundala"/>
+    </div>
+   
+
+  <!-- Card 1 -->
+  <a class="rounded-sm w-1/2 grid grid-cols-12 bg-white shadow p-3 gap-2 items-center hover:shadow-lg transition delay-150 duration-300 ease-in-out hover:scale-105 transform" href="#">
     
-  
+    <!-- Icon -->
+    <div class="col-span-12 md:col-span-1">
+        <img src="admin/gambar/cover_gundala.jpg" alt="">
+    </div>
+    
+    <!-- Title -->
+    <div class="col-span-11 xl:-ml-5">
+      <p class="pl-5 text-blue-600 font-semibold"> Episode 5 </p>
+    </div>
+    
+    <!-- Description -->
+    <div class="md:col-start-2 col-span-11 xl:-ml-5">
+      <p class="pl-5 text-sm text-gray-800 font-light"> 20 Desember 2023 </p>
+    </div>
+    
+  </a>
+    
+
+  <!-- Card 1 -->
+  <a class="rounded-sm w-1/2 grid grid-cols-12 bg-white shadow p-3 gap-2 items-center hover:shadow-lg transition delay-150 duration-300 ease-in-out hover:scale-105 transform" href="#">
+    
+    <!-- Icon -->
+    <div class="col-span-12 md:col-span-1">
+        <img src="admin/gambar/cover_gundala.jpg" alt="">
+    </div>
+    
+    <!-- Title -->
+    <div class="col-span-11 xl:-ml-5">
+      <p class="pl-5 text-blue-600 font-semibold"> Episode 4 </p>
+    </div>
+    
+    <!-- Description -->
+    <div class="md:col-start-2 col-span-11 xl:-ml-5">
+      <p class="pl-5 text-sm text-gray-800 font-light"> 13 Desember 2023 </p>
+    </div>
+    
+  </a>
+
+
   <!-- Card 1 -->
   <a class="rounded-sm w-1/2 grid grid-cols-12 bg-white shadow p-3 gap-2 items-center hover:shadow-lg transition delay-150 duration-300 ease-in-out hover:scale-105 transform" href="#">
     
@@ -108,7 +159,7 @@
     
     <!-- Description -->
     <div class="md:col-start-2 col-span-11 xl:-ml-5">
-      <p class="pl-5 text-sm text-gray-800 font-light"> 7 Desember 2023 </p>
+      <p class="pl-5 text-sm text-gray-800 font-light"> 6 Desember 2023 </p>
     </div>
     
   </a>
