@@ -1,6 +1,6 @@
 <?php
 include("header.php");
-include("koneksiadmin.php");
+include("../koneksi.php");
 ?>
 <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">

@@ -1,6 +1,6 @@
 <?php
 include("header.php");
-include("koneksiadmin.php");
+include("../koneksi.php");
 ?>
 <div class="container-fluid mt-3">
   <h3>USER DETAIL</h3>

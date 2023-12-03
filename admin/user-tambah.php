@@ -1,6 +1,6 @@
 <?php
 include("header.php");
-include("koneksiadmin.php");
+include("../koneksi.php");
 if (isset($_POST["namadepan"])) {
     $namaDepan = $_POST["namadepan"];
     $namaBelakang = $_POST["namabelakang"];

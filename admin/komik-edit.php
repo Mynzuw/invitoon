@@ -1,6 +1,6 @@
 <?php
   // memanggil file koneksi.php untuk membuat koneksi
-include 'koneksiadmin.php';
+include '../koneksi.php';
 include 'header.php';
 
   // mengecek apakah di url ada nilai GET id
