@@ -61,7 +61,7 @@
                     <a href="populer.php" class="block py-2 px-3 text-black bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0">Populer</a>
                 </li>
                 <li>
-                    <a href="#" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Kategori</a>
+                    <a href="genre.php" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Kategori</a>
                 </li>
                 <li>
                     <a href="#" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Contact</a>
@@ -78,9 +78,10 @@
     </nav>
     
     <main class="bg-gray-200"> 
-        <div class="grid grid-rows-3 grid-flow-col gap-4 flex justify-center item-center">
-            <div class="row-span-3 ">
-                        <div class="col-span-1 p-10 ml-20">
+
+        <div class="grid grid-col-5 gap-4">
+            <div class="col-start-2">
+                        <div class="p-10 ml-64">
                                 <div class="max-w-sm bg-white border-bl-2 border-br-2 border-gray-300 rounded-lg shadow-lg">
                                     <a href="chapter.php">
                                         <img class="rounded-t-lg w-30 h-full object-cover" src="admin/gambar/Cover_Gundala.jpg" alt="" />
@@ -94,7 +95,7 @@
                                 </div>
                             </div>
                         </div>
-                    <div class="col-span-2 p-10">
+                    <div class="col-start-3 p-10">
                         <!-- Card 1 -->
                                 <a class="rounded-sm w-1/2 grid grid-cols-4 bg-white shadow p-3 gap-2 items-center hover:shadow-lg transition delay-150 duration-300 ease-in-out hover:scale-105 transform" href="#">
                                     
@@ -184,6 +185,7 @@
                     </div>
                 </div>
         </div>
+    
 
     </main>
 
