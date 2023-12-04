@@ -61,7 +61,7 @@
                     <a href="populer.php" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Populer</a>
                 </li>
                 <li>
-                    <a href="genre.php" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Kategori</a>
+                    <a href="genre.php" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Genre</a>
                 </li>
                 <li>
                     <a href="#" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Contact</a>
@@ -114,11 +114,11 @@
                                 </div>
                                 <!-- Item 4 -->
                                 <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                                    <img src="admin/gambar/One-Piece-1.jpg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                                    <img src="admin/gambar/image 1.jpg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
                                 </div>
                                 <!-- Item 5 -->
                                 <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                                    <img src="admin/gambar/17-F_Idk_vXMAAI4rr.jpg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                                    <img src="admin/gambar/kiranaRenjani.jpg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
                                 </div>
                             </div>
                             <!-- Slider indicators -->
@@ -163,7 +163,7 @@
                         include "fungsi.php";
 
                         //Query SQL
-                        $sql = "SELECT * FROM komik";
+                        $sql = "SELECT * FROM komik ORDER BY judul_komik";
 
                         //eksekusi SQL
                         $hasil = mysqli_query($conn,$sql);

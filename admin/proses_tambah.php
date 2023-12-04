@@ -35,7 +35,7 @@ if($cover != "") {
 
             } else {     
              //jika file ekstensi tidak jpg dan png maka alert ini yang tampil
-                echo "<script>alert('Ekstensi gambar yang boleh hanya jpg atau png.');window.location='komik-tambah.php';</script>";
+                echo "<script>alert('Ekstensi gambar yang boleh hanya jpg atau png.');window.location='komik.php';</script>";
             }
 } else {
    $query = "INSERT INTO komik (judul_komik, deskripsi, genre, pengarang, cover) VALUES ('$judul_komik', '$deskripsi', '$genre', '$pengarang', null)";
