@@ -2,7 +2,7 @@
 $serverName = "localhost";
 $userName = "root";
 $password = "12345678";
-$dbName = "web23";
+$dbName = "invitoon";
 
 
 //buat koneksi
