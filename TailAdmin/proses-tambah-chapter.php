@@ -9,17 +9,17 @@ if ($conn->connect_error) {
 
 $komik_id   = $_POST['komik_id'];
 $no_chapter  = $_POST['no_chapter'];
+$chapter_id = $komik_id*10000 + $no_chapter;
 
 
 
 // Cek apakah tombol "Tambah Data" ditekan
 if(isset($_POST['no_chapter'])) {
     // Query SQL untuk menyisipkan data ke database
-    $sql = "INSERT INTO chapter (komik_id, no_chapter) VALUES ($komik_id, $no_chapter)";
+    $sql = "INSERT INTO chapter (komik_id, no_chapter, chapter_id) VALUES ($komik_id, $no_chapter, $chapter_id)";
 
     if ($conn->query($sql) === TRUE) {
-        $last_insert_id = $conn->insert_id; // Mendapatkan nilai auto-increment terakhir
-        echo "Data berhasil ditambahkan ke database. ID terakhir: " . $last_insert_id;
+        echo "Data berhasil ditambahkan ke database." ;
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }

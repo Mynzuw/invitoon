@@ -184,7 +184,8 @@ include("../koneksi.php");
         <td class="px-6 py-4 border border-b-indigo-200"><?= $row["genre"] ?></td>
       <!--   <td"><?= $row["deskripsi"] ?></td> -->
         <td class="px-6 py-4 border border-b-indigo-200"><?= $row["pengarang"] ?></td>
-        <td class="px-6 py-4 border border-b-indigo-200"><?= $row["tanggal"] ?></td>
+        <td class="px-6 py-4 border border-b-indigo-200"> <?= $row["tanggal"] ?>
+        </td>
         <td class="px-6 py-4 border border-b-indigo-200">
         <button class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" data-modal-target="crud-modal-edit" data-modal-toggle="crud-modal-edit" <?php echo $row['komik_id']; ?>>Edit</button>
         <a class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900" href="proses_hapus.php?id=<?php echo $row['id']; ?>" onclick="return confirm('Anda yakin akan menghapus data ini?')">Hapus</a>
@@ -230,6 +231,7 @@ mysqli_close($conn);
   }
 }
 </script>
+
         
 </body>
 </html>

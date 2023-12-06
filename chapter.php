@@ -125,18 +125,27 @@ include("koneksi.php");
         <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Genre : <?= $row["genre"]; ?></p>
       
         <div class="flex items-center mb-5">
+        <?php 
+                                include "koneksi.php";
+                                $chapter = $row["komik_id"];
+                                $sql = "SELECT komik.komik_id, komik.deskripsi, chapter.no_chapter FROM komik JOIN chapter ON komik.komik_id = chapter.komik_id WHERE komik.komik_id = $chapter";
+                                $hasiljmlcahpter = mysqli_query($conn,$sql);
+                                $jmlchptr = mysqli_num_rows($hasiljmlcahpter);
+                                ?>
                                             <svg class="w-4 h-4 text-yellow-300 me-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
                                                 <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
                                             </svg>
                                             <p class="ms-2 text-sm font-bold text-gray-900 dark:text-gray">4.95</p>
                                             <span class="w-1 h-1 mx-1.5 bg-gray-500 rounded-full dark:bg-gray-400"></span>
-                                            <p href="#" class="text-sm font-medium text-gray-900 ">73 Chapter</p>
+                                            <p href="#" class="text-sm font-medium text-gray-900 "><?= $jmlchptr ?> Chapter</p>                                           
                                         </div>
+                                      
+                                        
 
     </div>
   </div>
 </div>
-<div class="ml-[-5rem] mt-5 mr-20">
+<div class="full:ml-[-5rem] full:mt-5 full:mr-30 ">
         <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-gray-900">Deskripsi</h5>
         <p class="mb-3 font-normal text-gray-700 dark:text-gray-400"><?= $row["deskripsi"]; ?></p>
     </div>
@@ -173,7 +182,7 @@ $komik_id=0;
  <!-- Card 1 -->
 
 
- <div class="flex flex-col gap-4  items-center justify-center mb-5">
+ <div class="flex flex-col gap-4  items-center justify-center mb-3">
   <a href="baca-chapter.php" class="rounded-sm w-1/2 grid grid-cols-12 bg-white shadow p-3 gap-2 items-center hover:shadow-lg transition delay-150 duration-300 ease-in-out hover:scale-105 transform" href="#">
     
     <!-- Icon -->
