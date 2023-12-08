@@ -9,7 +9,7 @@ include 'header.php';
     $id = ($_GET["id"]);
 
     // menampilkan data dari database yang mempunyai id=$id
-    $query = "SELECT * FROM komik WHERE id='$id'";
+    $query = "SELECT * FROM komik WHERE komik_id='$id'";
     $result = mysqli_query($conn, $query);
     // jika data gagal diambil maka akan tampil error berikut
     if(!$result){
@@ -83,7 +83,7 @@ include 'header.php';
       <form method="POST" action="proses_edit.php" enctype="multipart/form-data" >
       <section class="base">
         <!-- menampung nilai id produk yang akan di edit -->
-        <input name="id" value="<?php echo $data['id']; ?>"  hidden />
+        <input name="id" value="<?php echo $data['komik_id']; ?>"  hidden />
         <div>
           <label>Judul Komik</label>
           <input type="text" name="judul_komik" value="<?php echo $data['judul_komik']; ?>" autofocus="" required="" />

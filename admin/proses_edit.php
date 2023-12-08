@@ -3,7 +3,7 @@
 include '../koneksi.php';
 
 	// membuat variabel untuk menampung data dari form
-  $komik_id = $_POST['komik_id'];
+  $id = $_POST['komik_id'];
   $judul_komik   = $_POST['judul_komik'];
   $deskripsi     = $_POST['deskripsi'];
   $genre    = $_POST['genre'];
@@ -18,11 +18,11 @@ include '../koneksi.php';
     $angka_acak     = rand(1,999);
     $nama_gambar_baru = $angka_acak.'-'.$cover; //menggabungkan angka acak dengan nama file sebenarnya
     if(in_array($ekstensi, $ekstensi_diperbolehkan) === true)  {
-                  move_uploaded_file($file_tmp, '../admin/gambar/'.$nama_gambar_baru); //memindah file gambar ke folder gambar
+                  move_uploaded_file($file_tmp, 'gambar/'.$nama_gambar_baru); //memindah file gambar ke folder gambar
                       
                     // jalankan query UPDATE berdasarkan ID yang komiknya kita edit
                    $query  = "UPDATE komik SET judul_komik = '$judul_komik', deskripsi = '$deskripsi', genre = '$genre', pengarang = '$pengarang', cover = '$nama_gambar_baru'";
-                    $query .= "WHERE komik_id = '$komik_id'";
+                    $query .= "WHERE id = '$id'";
                     $result = mysqli_query($conn, $query);
                     // periska query apakah ada error
                     if(!$result){
@@ -35,12 +35,12 @@ include '../koneksi.php';
                     }
               } else {     
                //jika file ekstensi tidak jpg dan png maka alert ini yang tampil
-                  echo "<script>alert('Ekstensi gambar yang boleh hanya jpg atau png.');window.location='komik.php';</script>";
+                  echo "<script>alert('Ekstensi gambar yang boleh hanya jpg atau png.');window.location='komik-tambah.php';</script>";
               }
     } else {
       // jalankan query UPDATE berdasarkan ID yang komiknya kita edit
       $query  = "UPDATE komik SET judul_komik = '$judul_komik', deskripsi = '$deskripsi', genre = '$genre', pengarang = '$pengarang'";
-      $query .= "WHERE komik_id = '$komik_id'";
+      $query .= "WHERE komik_id = '$id'";
       $result = mysqli_query($conn, $query);
       // periska query apakah ada error
       if(!$result){
