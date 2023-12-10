@@ -55,7 +55,44 @@
 
         
     </nav>
-    <div class="grid grid-cols-3 bg-gray-900">
+
+    <?php 
+        include("koneksi.php");
+        $chapter_id=0;
+        if (isset($_GET["chapter_id"])) {
+            $chapter_id = $_GET["chapter_id"];
+            $chapter_id = mysqli_real_escape_string($conn, $chapter_id);
+        }
+        
+ $sql = "SELECT * FROM content WHERE chapter_id=$chapter_id";
+ $result = mysqli_query($conn,$sql);
+ if (mysqli_num_rows($result) > 0) {
+  while ($row = mysqli_fetch_assoc($result)) {
+?>
+<div class="grid grid-cols-3 bg-gray-900">
+        <div>
+
+        </div>
+        <div>
+     
+         <img src="content/<?= $row["content"] ?>" alt="">
+        </div>
+      
+    <div>
+
+    </div>
+    
+        
+    </div>
+      
+<?php
+ }
+}
+mysqli_close($conn);
+?>
+    
+
+   <!--  <div class="grid grid-cols-3 bg-gray-900">
         <div>
 
         </div>
@@ -83,7 +120,7 @@
                 </svg>
                 </button>
 
-                <!-- Explanation -->
+         
                 <div
                 class="container mx-auto mt-4 text-center text-neutral-800 dark:text-white"
                 style="height: 2000px">
@@ -100,7 +137,9 @@
     </div>
     
         
-    </div>
+    </div> -->
+
+    <!--COMMENT -->
     <div>
     <section class="bg-white dark:bg-gray-900 py-8 lg:py-16 antialiased">
   <div class="max-w-2xl mx-auto px-4">

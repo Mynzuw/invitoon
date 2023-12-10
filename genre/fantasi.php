@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="Logo Invitoon 1.png">
+    <link rel="icon" type="image/x-icon" href="../Logo Invitoon 1.png">
     <title>INVITOON</title>
     <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"> -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -20,7 +20,7 @@
     <nav class="navbar-sticky bg-white sticky w-full z-10 top-0 left-0 right-0 border-b border-gray-200;">
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
             <a href="index.php" class="flex items-center space-x-3 rtl:space-x-reverse">
-                <img src="Logo Invitoon 1.png" class="h-8" alt="Flowbite Logo">
+                <img src="../Logo Invitoon 1.png" class="h-8" alt="Flowbite Logo">
                 <span class="self-center text-2xl font-semibold whitespace-nowrap">INVITOON</span>
             </a>
             <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
@@ -55,16 +55,16 @@
             <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
                 <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white">
                 <li>
-                    <a href="index.php" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0" aria-current="page">Home</a>
+                    <a href="../index.php" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0" aria-current="page">Home</a>
                 </li>
                 <li>
-                    <a href="populer.php" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Populer</a>
+                    <a href="../populer.php" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Populer</a>
                 </li>
                 <li>
-                    <a href="genre.php" class="block py-2 px-3 text-black bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0">Genre</a>
+                    <a href="" class="block py-2 px-3 text-black bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0">Genre</a>
                 </li>
                 <li>
-                    <a href="#" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Contact</a>
+                    <a href="" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Contact</a>
                 </li>
                 </ul>
             </div>
@@ -81,22 +81,22 @@
             <div class="justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
                 <ul class="items-center flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-48 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white">
                 <li>
-                    <a href="genre/fantasi.php" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0" aria-current="page">Fantasi</a>
+                    <a href="fantasi.php" class="block py-2 px-3 text-black bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0">Fantasi</a>
                 </li>
                 <li>
-                    <a href="genre/aksi.php" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Aksi</a>
+                    <a href="aksi.php" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Aksi</a>
                 </li>
                 <li>
-                    <a href="genre/misteri.php" class="block py-2 px-3 text-black bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0">Misteri</a>
+                    <a href="misteri.php" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Misteri</a>
                 </li>
                 <li>
-                    <a href="genre/horor.php" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Horor</a>
+                    <a href="horor.php" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Horor</a>
                 </li>
                 <li> 
-                    <a href="genre/komedi.php" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Komedi</a>
+                    <a href="komedi.php" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Komedi</a>
                 </li>
                 <li>
-                    <a href="genre/romantis.php" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Romantis</a>
+                    <a href="romantis.php" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Romantis</a>
                 </li>
                 </ul>
             </div>
@@ -104,19 +104,38 @@
     </nav>
     
     <main> 
-        <div>
-        <div class="mt-5 p-5 font-inter grid grid-cols-3 gap-2 md:grid-cols-5">
-        <a href="#" class="flex flex-col items-center bg-white border border-white-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-white-100 dark:border-white-700 dark:bg-white-800 dark:hover:bg-white-700">
-    <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg" src="admin/gambar/965-Fuuto Pi.jpg" alt="">
-    <div class="flex flex-col justify-between p-4 leading-normal">
-        <h5 class="mb-2 text-2xl font-bold tracking-tight text-white-900 dark:text-gray">Fuuto Pi</h5>
+    <div>
+    <div class="mt-5 p-5 font-inter grid grid-cols-3 gap-2 md:grid-cols-4">
+<?php
+include "../koneksi.php";
+                        
+$sql = "SELECT * FROM komik WHERE genre='fantasi'";
+
+                        //eksekusi SQL
+    $hasil = mysqli_query($conn,$sql);
+
+                        //hitung data yang ada di tabel
+                        $jmlData = mysqli_num_rows($hasil);
+                        //cek apakah ada datanya
+                        if ($jmlData > 0) {
+
+                            //tampilkan datanya
+                            while ($row = mysqli_fetch_assoc($hasil)) {
+
+                        ?>
+            <a href="#" class="flex flex-col items-center bg-white border border-white-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-white-100 dark:border-white-700 dark:bg-white-800 dark:hover:bg-white-700">
+            <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg" src="../admin/gambar/<?= $row["cover"] ?>" alt="">
+        <div class="flex flex-col justify-between p-4 leading-normal">
+        <h5 class="mb-2 text-2xl font-bold tracking-tight text-white-900 dark:text-gray"><?= $row["judul_komik"] ?></h5>
     </div>
 </a>
+                            
+<?php
+                                                                        }
+                                        }
+?>
 
-        </div>
-
-
-        </div>
+        
         
 
     </main>

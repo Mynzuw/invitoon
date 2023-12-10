@@ -183,7 +183,7 @@ $komik_id=0;
 
 
  <div class="flex flex-col gap-4  items-center justify-center mb-3">
-  <a href="baca-chapter.php" class="rounded-sm w-1/2 grid grid-cols-12 bg-white shadow p-3 gap-2 items-center hover:shadow-lg transition delay-150 duration-300 ease-in-out hover:scale-105 transform" href="#">
+  <a href="baca-chapter.php?chapter_id=<?= $row_chapter["chapter_id"]; ?>" class="rounded-sm w-1/2 grid grid-cols-12 bg-white shadow p-3 gap-2 items-center hover:shadow-lg transition delay-150 duration-300 ease-in-out hover:scale-105 transform" href="#">
     
     <!-- Icon -->
     <div class="col-span-12 md:col-span-1">
