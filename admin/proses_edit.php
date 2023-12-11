@@ -22,7 +22,7 @@ include '../koneksi.php';
                       
                     // jalankan query UPDATE berdasarkan ID yang komiknya kita edit
                    $query  = "UPDATE komik SET judul_komik = '$judul_komik', deskripsi = '$deskripsi', genre = '$genre', pengarang = '$pengarang', cover = '$nama_gambar_baru'";
-                    $query .= "WHERE id = '$id'";
+                    $query .= "WHERE komik_id = '$id'";
                     $result = mysqli_query($conn, $query);
                     // periska query apakah ada error
                     if(!$result){

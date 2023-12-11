@@ -6,9 +6,18 @@
     <link rel="icon" type="image/x-icon" href="Logo Invitoon 1.png">
     <title>INVITOON</title>
     <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"> -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css" />
+
+
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.js"></script>
+
+   
     <!-- <style>
         .fakeimg {
             height: 200px;         
@@ -33,8 +42,8 @@
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
                         </svg>
                     </div>
-                    <input type="search" id="default-search" class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-white-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-blue dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Cari Judul Komik" required>
-                    <button type="submit" class="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Cari</button>
+                    <input type="text" id="search_data" class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-white-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-blue dark:focus:ring-blue-500 dark:focus:border-blue-500" autocomplete="off" placeholder="Cari Judul Komik" required>
+                   
                     
                 </div>
             </form>
@@ -355,21 +364,27 @@
         </div>
     </main>
 
-    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-        <script> let table = new DataTable("#tableku"); </script>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
-    <script>
+<script>
+  $(document).ready(function(){
+      
+    $('#search_data').autocomplete({
+      source: "fetch.php",
+      minLength: 1,
+      select: function(event, ui)
+      {
+        $('#search_data').val(ui.item.value);
+        window.location.href = "chapter.php?komik_id=" + ui.item.id;
+      }
+    }).data('ui-autocomplete')._renderItem = function(ul, item){
+      return $("<li class='ui-autocomplete-row sticky'></li>")
+        .data("item.autocomplete", item)
+        .append(item.label)
+        .appendTo(ul);
+    };
 
-var auto_complete = new Autocomplete(document.getElementById('country_name'), {
-    data:<?php echo json_encode($data); ?>,
-    maximumItems:10,
-    highlightTyped:true,
-    highlightClass : 'fw-bold text-primary'
-}); 
-
+  });
 </script>
 </body>
 </html>

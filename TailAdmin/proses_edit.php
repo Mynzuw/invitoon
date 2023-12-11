@@ -8,6 +8,7 @@ include '../koneksi.php';
   $deskripsi     = $_POST['deskripsi'];
   $genre    = $_POST['genre'];
   $pengarang    = $_POST['pengarang'];
+  var_dump($_FILES['cover']);
   $cover = $_FILES['cover']['name'];
   //cek dulu jika merubah gambar komik jalankan coding ini
   if($cover != "") {
@@ -23,6 +24,7 @@ include '../koneksi.php';
                     // jalankan query UPDATE berdasarkan ID yang komiknya kita edit
                    $query  = "UPDATE komik SET judul_komik = '$judul_komik', deskripsi = '$deskripsi', genre = '$genre', pengarang = '$pengarang', cover = '$nama_gambar_baru'";
                     $query .= "WHERE komik_id = '$komik_id'";
+                    echo $query;
                     $result = mysqli_query($conn, $query);
                     // periska query apakah ada error
                     if(!$result){
