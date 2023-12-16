@@ -1,135 +1,268 @@
 <?php
-include("header.php");
+session_start();
+
+if (!isset($_SESSION['authenticated']) || $_SESSION['authenticated'] !== true) {
+    header('Location: login.php'); // Redirect jika tidak terotentikasi
+    exit;
+}
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="../Logo Invitoon 1.png">
+    <title>INVITOON</title>
+    
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.css"  rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+</head>
+<body  class="bg-gray-200">
+<?php
 include("../koneksi.php");
 ?>
-<link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.css"  rel="stylesheet" />
+<?php
+    $komik_id=0;
+    if (isset($_GET["komik_id"])) {
+        $komik_id = $_GET["komik_id"];
+        $komik_id = mysqli_real_escape_string($conn, $komik_id);
+    }
+    $sql = "SELECT * FROM komik WHERE komik_id=$komik_id";
+    $result = mysqli_query($conn,$sql);
+    if (mysqli_num_rows($result) > 0){
+        $row = mysqli_fetch_assoc($result);
+        $id = $row["komik_id"];
+        $judul_komik = $row["judul_komik"];
+        $deskripsi = $row["deskripsi"];
+        $cover = $row["cover"];
+    } else {
+        $id = "";
+        $judul_komik = "";
+        $deskripsi = "";
+        $cover = "";
+    }
+    mysqli_close($conn);
+?>
+
+  <nav class="navbar-sticky bg-white sticky w-full z-10 top-0 left-0 right-0 border-b border-gray-200;">
+        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+            <a href="index.php" class="flex items-center space-x-3 rtl:space-x-reverse">
+                <img src="../Logo Invitoon 1.png" class="h-8" alt="INVITOON Logo">
+                <span class="self-center text-2xl font-semibold whitespace-nowrap">ADMIN INVITOON</span>
+            </a>
+            <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+
+                
+                
+                <button data-collapse-toggle="navbar-sticky" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200" aria-controls="navbar-sticky" aria-expanded="false">
+                    <span class="sr-only">Open main menu</span>
+                    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
+                <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white">
+                <li>
+                    <a href="dashboard.php" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0" aria-current="page">DASHBORD</a>
+                </li>
+                <li>
+                    <a href="users.php" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">USERS</a>
+                </li>
+                <li>
+                    <a href="komik.php" class="block py-2 px-3 text-black bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0">KOMIK</a>
+                </li>
+                <li>
+                    <form method="post" action="logout.php">
+                        <button type="submit" name="logout" class="block py-2 px-3 text-black bg-red-700 rounded md:bg-transparent md:text-red-700 md:p-0">LOGOUT</button>
+                    </form>
+                </li>
+                </ul>
+            </div>
+
+            
+            
+
+        </div>
 
 
-  
 
+    
+        
+    </nav>
+<main>
+<!-- Breadcrumb -->
+<nav class="mx-5 mt-10 flex px-5 py-3 text-gray-700 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-800 dark:border-gray-700" aria-label="Breadcrumb">
+  <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
+    <li class="inline-flex items-center">
+      <a href="komik.php" class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white">
+        <svg class="w-3 h-3 me-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+          <path d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z"/>
+        </svg>
+        KOMIK
+      </a>
+    </li>
+    <li aria-current="page">
+      <div class="flex items-center">
+        <svg class="rtl:rotate-180 block w-3 h-3 mx-1 text-gray-400 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+        </svg>
+        <a href="#" class="ms-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ms-2 dark:text-gray-400 dark:hover:text-white">KOMIK DETAIL</a>
+      </div>
+    </li>
+  </ol>
+</nav>
+<div class="p-10"></div>
 
+<span class="p-10 self-center text-2xl font-semibold whitespace-nowrap">KOMIK DETAIL MANAGEMENT</span>
+<p class="p-10">
+    Tempat untuk mengelola komik seperti menambahkan, mengedit, dan menghapus.
+</p>
+</div>
 
-<div class="container-fluid mt-3">
-  <h3>KOMIK MANAGEMENT</h3>
-  <p>List Komik yang Terdaftar Pada Website Aplikasi</p>
-  <button class="btn btn-primary mb-3" data-toggle="modal" data-target="#myModal">Tambah Komik</button>
-
-
-
-  
-<a href="#" class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-    <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg" src="/docs/images/blog/image-4.jpg" alt="">
-    <div class="flex flex-col justify-between p-4 leading-normal">
-        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5>
-        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
+<div class="grid grid-cols-2">
+<div class="ml-10">
+<a href="#" class="flex flex-col bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+    <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg" src="../admin/gambar/<?= $row["cover"]; ?>" alt="">
+    <div class=" p-4 leading-normal">
+        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><?= $row["judul_komik"]; ?></h5>
+        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Pengarang : <?= $row["pengarang"]; ?></p>
+        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Genre : <?= $row["genre"]; ?></p>
     </div>
 </a>
+</div>
+<div class="ml-[-5rem] mt-5 mr-20">
+        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-gray-900">Deskripsi</h5>
+        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400"><?= $row["deskripsi"]; ?></p>
+    </div>
+</a>
+</div>
+</div>
+
+<div class="p-10">
+<!-- Modal toggle -->
+<button data-modal-target="crud-modal" data-modal-toggle="crud-modal" class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
+  Tambah Chapter
+</button>
 
 
+<!-- Main modal -->
+<div id="crud-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+    <div class="relative p-4 w-full max-w-md max-h-full">
+        <!-- Modal content -->
+        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+            <!-- Modal header -->
+            <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+                    Tambah Chapter 
+                </h3>
+                <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="crud-modal">
+                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                    </svg>
+                    <span class="sr-only">Close modal</span>
+                </button>
+            </div>
+            <!-- Modal body -->
+            <form class="p-4 md:p-5" method="POST" action="../controllers/proses-tambah-chapter.php" enctype="multipart/form-data">
+                <div class="grid gap-4 mb-4 grid-cols-2">
+                    <div class="col-span-2">
+                        <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Komik ID</label>
+                        <input type="number" name="komik_id" id="komik_id" class="mb-5 bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 cursor-not-allowed dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" value="<?= $row["komik_id"]; ?>">
+                    </div>
 
-  <table id="tableku" class="table table-striped table-hover mb-3">
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Cover</th>
-        <th>Judul Komik</th>
-        <th>Genre</th>
-        <th>Deskripsi</th>
-        <th>Pengarang</th>
-        <th>Tanggal</th>
-        <th>Action</th>
-      </tr>
-    </thead>
-    <tbody>
+                    <div class="col-span-2">
+                        <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nomor Chapter</label>
+                        <input type="number" name="no_chapter" id="no_chapter" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Tulis Nomor Chapter" required="">
+                    </div>
+                </div>
+                <button type="submit" name="tambah" id="tambah" class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                    <svg class="me-1 -ms-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd"></path></svg>
+                    Tambah Chapter baru
+                </button>
+
+            </form>
+            
+        </div>
+        
+    </div>
+    
+</div>
+</div>
+
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg p-10">
+
+
+    <table class="mt-5 w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+<tr>
+                <th scope="col" class="px-6 py-3">
+                    KOMIK ID
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    CHAPTER ID
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    NO CHAPTER
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Action
+                </th>
+            </tr>
 <?php 
- $sql = "SELECT * FROM komik ORDER BY tanggal DESC";
+include("../koneksi.php");
+
+$komik_id=0;
+    if (isset($_GET["komik_id"])) {
+        $komik_id = $_GET["komik_id"];
+        $komik_id = mysqli_real_escape_string($conn, $komik_id);
+    }
+
+ $sql = "SELECT * FROM chapter WHERE komik_id=$komik_id ORDER BY no_chapter DESC";
+    
  $result = mysqli_query($conn,$sql);
  if (mysqli_num_rows($result) > 0) {
   while ($row = mysqli_fetch_assoc($result)) {
 ?>
-      <tr>
-        <td><a href="komik-detail.php?id=<?= $row["id"] ?>"><?= $row["id"] ?></a></td>
-        <td><img src="gambar/<?= $row["cover"] ?>"style ="width:100px" ></td>
-        <td><?= $row["judul_komik"] ?></td>
-        <td><?= $row["genre"] ?></td>
-        <td><?= $row["deskripsi"] ?></td>
-        <td><?= $row["pengarang"] ?></td>
-        <td><?= $row["tanggal"] ?></td>
-        <td>
-        <a class="btn btn-primary mb-3" href="komik-edit.php?id=<?php echo $row['id']; ?>">Edit</a>
-        <a class="btn btn-primary mb-3" href="proses_hapus.php?id=<?php echo $row['id']; ?>" onclick="return confirm('Anda yakin akan menghapus data ini?')">Hapus</a>
-        </td>
-      </tr>
+        <tr class="odd:bg-white odd:dark:bg-gray-300 even:bg-gray-50 even:dark:bg-gray-100 border-b dark:border-gray-700">
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-gray">
+                <?= $row["komik_id"]; ?>
+                </th>
+                <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-gray">
+                <?= $row["chapter_id"]; ?>
+                </td>
+                <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-gray">
+                <?= $row["no_chapter"]; ?>
+                </td>
+                <td class="px-6 py-4">
+                    <a href="isi_chapter.php?chapter_id=<?= $row["chapter_id"]; ?>" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">MANAGE CHAPTER</a>
+                </td>
+            </tr>
 <?php
  }
 }
 mysqli_close($conn);
 ?>
-    </tbody>
-  </table>
 
-  <!-- Modal -->
-  <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-    
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        
-        <h1>Tambah Komik</h1>
-
-        </div>
-        <div class="modal-body">
-          
-      <form method="POST" action="proses_tambah.php" enctype="multipart/form-data" >
-      <section class="base">
-        <div>
-          <label>Judul Komik</label>
-          <input type="text" name="judul_komik" autofocus="" required="" />
-        </div>
-        <div>
-          <label>Deskripsi</label>
-         <input type="text" name="deskripsi" />
-        </div>
-        <div>
-          <label>Genre</label>
-         <input type="text" name="genre" required="" />
-        </div>
-        <div>
-          <label>Pengarang</label>
-         <input type="text" name="pengarang" required="" />
-        </div>
-        <div>
-          <label>Cover Komik</label>
-         <input type="file" name="cover" required="" />
-        </div>
-        <div>
-         <button type="submit">Simpan Komik</button>
-        </div>
-        </section>
-      </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-      
-    </div>
-  </div>
+        </tbody>
+    </table>
 </div>
 
 
-<?php
-include("footer.php");
-?>
+</main>
 
-<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+
+
+        
+        <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<script> let table = new DataTable("#tableku"); </script>
+        <script> let table = new DataTable("#tableku"); </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.js"></script>
+
+        
 </body>
 </html>

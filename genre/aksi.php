@@ -9,6 +9,21 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.js"></script>
+    <?php 
+     session_start();
+
+     if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"] === true) {
+         echo '<script>document.addEventListener("DOMContentLoaded", function() {
+                 document.getElementById("login-button").style.display = "none";
+                 document.getElementById("login-button").classList.remove("hidden");
+                 document.getElementById("logout-button").classList.remove("hidden");
+                 document.getElementById("user-info").classList.remove("hidden");
+         })</script>';
+         $username = $_SESSION['username'];
+     }
+    
+
+    ?>
     <!-- <style>
         .fakeimg {
             height: 200px;         
@@ -33,14 +48,18 @@
                         </svg>
                     </div>
                     <input type="search" id="default-search" class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-white-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-blue dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Cari Judul Komik" required>
-                    <button type="submit" class="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Cari</button>
-                    
+                   
                 </div>
             </form>
-            <div class="py-2 px-3">
-                <button type="button" class="bg-blue-700 hover:bg-blue-800 text-white font-bold py-3 px-4 border border-blue-700 rounded">Masuk</button>
+            <div class="py-2 px-3" id="login-button">
+                <button type="button" data-modal-target="login-modal" data-modal-toggle="login-modal" class="login-button bg-blue-700 hover:bg-blue-800 text-white font-bold py-3 px-4 border border-blue-700 rounded">Masuk</button>
             </div>
-          
+            
+            <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
+            <a id="user-info" class="hidden block py-2 px-3 text-black bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0" href="profile.php"><?php echo $username; ?></a>
+            <a id="logout-button" class="hidden" href="controllers/logout.php"><svg class="ml-5 h-8 w-8 text-red-500"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round" href="">  <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />  <polyline points="16 17 21 12 16 7" />  <line x1="21" y1="12" x2="9" y2="12" /></svg></a>
+            
+    </div>
 
                 
                 
@@ -62,9 +81,6 @@
                 </li>
                 <li>
                     <a href="" class="block py-2 px-3 text-black bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0">Genre</a>
-                </li>
-                <li>
-                    <a href="" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Contact</a>
                 </li>
                 </ul>
             </div>
